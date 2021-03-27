@@ -34,6 +34,8 @@ function alertTimeoutFail(mymsg,mymsecs)
  document.body.appendChild(myelement);
 }
 
+
+
 document.getElementById("create-form").addEventListener("submit", function(e){
   validation()
   console.log(errors.length)
