@@ -3,6 +3,8 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const flash = require('connect-flash')
 const app = express()
+let db = require('./db').db().collection("comments")
+let data 
 
 let sessionOptions = session({
   secret: "JavaScript is sooooooooo coool",
@@ -23,6 +25,20 @@ app.use(express.json())
 app.use(express.static('public'))
 app.set('views', 'views')
 app.set('view engine', 'ejs')
+
+app.post('/create-item',function(req,res){
+  date = new Date()
+  data = {
+      text: req.body.text,
+      yorum: req.body.text2,
+      date: date.toLocaleString()
+  }
+
+  db.insertOne(data, function(err, info){
+      res.json(info.ops[0])
+  })
+  
+})
 
 app.use('/', router)
 
