@@ -3,6 +3,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const flash = require('connect-flash')
 const app = express()
+const user = require('./controllers/userController')
 let db = require('./db').db().collection("comments")
 let data 
 
@@ -29,7 +30,7 @@ app.set('view engine', 'ejs')
 app.post('/create-item',function(req,res){
   date = new Date()
   data = {
-      text: req.body.text,
+      isim: req.session.user.username,
       yorum: req.body.text2,
       date: date.toLocaleString()
   }
