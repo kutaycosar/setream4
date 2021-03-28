@@ -24,13 +24,13 @@ User.prototype.cleanUp = function() {
 User.prototype.validate = function() {
   return new Promise(async (resolve, reject) => {
     if (this.data.username == "") {this.errors.push("Kullanıcı adı girmelisiniz.")}
-    if (this.data.username != "" && !validator.isAlphanumeric(this.data.username)) {this.errors.push("Kullanıcı adı sadece harf ve numara barındırabilir.")}
+    // if (this.data.username != "" && !validator.isAlphanumeric(this.data.username)) {this.errors.push("Kullanıcı adı sadece harf ve numara barındırabilir.")}
     if (!validator.isEmail(this.data.email)) {this.errors.push("Geçerli bir mail adresi girmelisiniz.")}
     if (this.data.password == "") {this.errors.push("Şifre girmelisiniz.")}
     if (this.data.password.length > 0 && this.data.password.length < 8) {this.errors.push("Oluşturulan şifre en az sekiz karakterden oluşmalıdır.")}
     if (this.data.password.length > 50) {this.errors.push("Oluşturulan şifre elli karakteri geçemez.")}
     if (this.data.username.length > 0 && this.data.username.length < 3) {this.errors.push("Kullanıcı adı üç karakterden az olamaz.")}
-    if (this.data.username.length > 30) {this.errors.push("Kullanıcı adı otuz karakteri geçemez.")}
+    if (this.data.username.length > 50) {this.errors.push("Kullanıcı adı otuz karakteri geçemez.")}
   
     // Only if username is valid then check to see if it's already taken
     if (this.data.username.length > 2 && this.data.username.length < 31 && validator.isAlphanumeric(this.data.username)) {
