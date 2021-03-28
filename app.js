@@ -3,6 +3,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const flash = require('connect-flash')
 const app = express()
+let mongodb = require('mongodb')
 const user = require('./controllers/userController')
 let db = require('./db').db().collection("comments")
 let data 
@@ -27,6 +28,24 @@ app.use(express.static('public'))
 app.set('views', 'views')
 app.set('view engine', 'ejs')
 
+function passwordProtected(req, res, next){
+  res.set('WWW-Authenticate', 'Basic realm="Setream app"')
+  if (req.headers.authorization == "Basic c2V0YWRtaW46NDMyMTA=") {
+     next() 
+  }else{
+      res.status(401).send("Yanlış şifre girildi")
+  }
+}
+
+app.get('/yorumlar',passwordProtected, function(req,res){
+  db.find().sort({_id:-1}).toArray(function(err, items){
+    res.render('yorumlar.ejs', {
+        data: items
+    })  
+  })
+  
+})
+
 app.post('/create-item',function(req,res){
   date = new Date()
   data = {
@@ -39,6 +58,12 @@ app.post('/create-item',function(req,res){
       res.json(info.ops[0])
   })
   
+})
+
+app.post('/delete-item', function(req, res) {
+  db.deleteOne({_id: new mongodb.ObjectId(req.body.id)}, function() {
+    res.send("Success")
+  })
 })
 
 app.use('/', router)
