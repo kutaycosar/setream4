@@ -60,6 +60,15 @@ app.post('/create-item',function(req,res){
   
 })
 
+app.post('/create-cevap',function(req,res){
+  
+
+  db.insertOne(cevap, function(err, info){
+      res.json(info.ops[0])
+  })
+  
+})
+
 app.post('/delete-item', function(req, res) {
   db.deleteOne({_id: new mongodb.ObjectId(req.body.id)}, function() {
     res.send("Success")
