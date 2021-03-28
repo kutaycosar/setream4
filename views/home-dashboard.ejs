@@ -15,8 +15,7 @@
   <header class="header-bar mb-3";>
     <div class="container d-flex flex-column flex-md-row align-items-center p-3">
       <h4 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-white">Setream</a></h4>
-      <div class="flex-row my-3 my-md-0">
-    
+      <div class="flex-row my-4 my-md-0">
         <a class="text btn-sm btn-success mr-2 text-white" > <%= username %> olarak giriş yaptınız</a>
         <form action="/logout" method="POST" class="d-inline">
           <button class="btn btn-sm btn-secondary">Çıkış</button>
@@ -29,7 +28,9 @@
     <div style="padding:56.25% 0 0 0;position:relative;">
       <iframe id="FrameId" src="https://player.vimeo.com/video/513071057?autoplay=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div><script src="https://player.vimeo.com/api/player.js"></script>
-    
+    <div class="float-left">
+      <button type="button" class="btn btn-outline-success btn-lg" data-toggle="modal" data-target="#myModal">interaktif</a>
+    </div>
     <div class="btn-group btn-toggle d-flex justify-content-end" >
       <button id="lang-button1" type="button" onclick="ChangeSource(1);" class="btn btn-primary">Orjinal Dil</a>
       <button id="lang-button2" type="button" onclick="ChangeSource(2);" class="btn btn-secondary">Simultane çeviri</a>
@@ -38,13 +39,55 @@
       <form id="create-form" action="create-item" method="POST">
         <p></p>
           
-          <div class="form-group">
-            <label style="background-color: gray; color: white; font-size: 20px;"class="border border-5 border-white rounded animate__animated animate__pulse animate__faster animate__delay-3s" for="yorum"> Sorunuz </label>
-            <textarea id="create-field2" name="yorum" class="form-control" type="yorum" class="form-control mr-3" id="comment" cols="30" placeholder="Sorunuz"></textarea>
+          <div class="d-flex">
+            <textarea id="create-field2" name="yorum" class="form-control mr-1" type="yorum" class="form-control mr-3" id="comment" cols="30" placeholder="Sorunuz"></textarea>
+            <button type="submit" class="btn btn-success">Gönder</button>
           </div>
-          <button type="submit" class="btn btn-primary">Gönder</button>
+          
         </form>
   </div>
+
+
+  
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h1>title</h1>
+              </div>
+              <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <button id="aSikki" type="button" class="btn btn-primary rounded-circle btn-lg">A</button>
+                  </div>
+                  <div class="col-sm">
+                    <button id="bSikki" type="button" class="btn btn-warning rounded-circle btn-lg">B</button>
+                  </div>
+                  <div class="col-sm">
+                    <button id="cSikki" type="button" class="btn btn-success rounded-circle btn-lg">C</button>
+                  </div>
+                  <div class="col-sm">
+                    <button id="dSikki" type="button" class="btn btn-danger rounded-circle btn-lg">D</button>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="modal-footer">
+                <input class="btn btn-secondary" data-dismiss="modal" value="Kapat">
+              </div>
+          </div>  
+        </div>
+      </div>
+       
+    </div>
+  </div>
+
+
   
   <!-- footer begins -->
   <footer class="border-top text-center small text-muted py-3">
