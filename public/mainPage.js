@@ -32,28 +32,6 @@ function alertTimeoutFail(mymsg,mymsecs)
  document.body.appendChild(myelement);
 }
 
-document.getElementById("sorucevap").addEventListener("click", function(e){
-  e.preventDefault()
-
-  if (e.target.classList.contains("aSikki")) {
-    let cevap = a
-  }
-  if (e.target.classList.contains("bSikki")) {
-    let cevap = b
-  }
-  if (e.target.classList.contains("cSikki")) {
-    let cevap = c
-  }
-  if (e.target.classList.contains("dSikki")) {
-    let cevap = d
-  }
-
-  axios.post('/create-cevap', {cevap}).then(function () {
-    
-  }).catch(function() {
-    console.log("Please try again later.")
-  })
-})
 
 document.getElementById("create-form").addEventListener("submit", function(e){
   validation()
