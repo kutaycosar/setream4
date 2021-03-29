@@ -1,5 +1,14 @@
 const User = require('../models/User')
 
+function passwordProtected(req, res, next){
+  res.set('WWW-Authenticate', 'Basic realm="Setream app"')
+  if (req.headers.authorization == "Basic c2V0YWRtaW46NDMyMTA=") {
+     next() 
+  }else{
+      res.status(401).send("Yanlış şifre girildi")
+  }
+}
+
 exports.login = function(req, res) {
   let user = new User(req.body)
   user.login().then(function(result) {

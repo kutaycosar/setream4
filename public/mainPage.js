@@ -51,11 +51,9 @@ document.getElementById("create-form").addEventListener("submit", function(e){
     errors = []
     e.preventDefault()
     alertTimeoutFail("Gönderim başarısız." ,3000)
-    createField.value = ""
     createField2.value = ""
-    createField.placeholder = "İsminiz elli karakterden az ve iki karakterden fazla olmalıdır."
     createField2.placeholder = "Yorumunuz on karakterden uzun olmalıdır."
-    createField.focus()
+    createField2.focus()
   }
   
 })
