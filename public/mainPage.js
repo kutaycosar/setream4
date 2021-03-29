@@ -6,7 +6,7 @@ let errors = []
 let validation = function(){
   if (createField2.value.length < 10) {errors.push("Yorumunuz 10 karakterden uzun olmalıdır.")}
 }
-
+///
 
 function alertTimeoutSuccess(mymsg,mymsecs)
 {

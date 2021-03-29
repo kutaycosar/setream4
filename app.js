@@ -29,7 +29,7 @@ app.set('views', 'views')
 app.set('view engine', 'ejs')
 
 function passwordProtected(req, res, next){
-  res.set('WWW-Authenticate', 'Basic realm="Setream app"')
+  res.set('WWW-Authenticate', 'Basic realm="Setream app", charset="UTF-8')
   if (req.headers.authorization == "Basic c2V0YWRtaW46NDMyMTA=") {
      next() 
   }else{
