@@ -9,10 +9,10 @@ function passwordProtected(req, res, next){
     }else{
         res.status(401).send("Yanlış şifre girildi")
     }
-  }
+}
 
 router.get('/', userController.home)
-router.post('/register', userController.register)
+router.post('/register',passwordProtected, userController.register)
 router.post('/login', passwordProtected, userController.login)
 router.post('/logout', userController.logout)
 
