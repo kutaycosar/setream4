@@ -50,7 +50,7 @@ User.prototype.validate = function() {
 User.prototype.login = function() {
   return new Promise((resolve, reject) => {
     this.cleanUp()
-    usersCollection.findOne({username: this.data.username}).then((attemptedUser) => {
+    usersCollection.findOne({email: this.data.email}).then((attemptedUser) => {
       if (attemptedUser && bcrypt.compareSync(this.data.password, attemptedUser.password)) {
         this.data = attemptedUser
         this.getAvatar()
