@@ -12,12 +12,19 @@ User.prototype.cleanUp = function() {
   if (typeof(this.data.username) != "string") {this.data.username = ""}
   if (typeof(this.data.email) != "string") {this.data.email = ""}
   if (typeof(this.data.password) != "string") {this.data.password = ""}
+  if (typeof(this.data.brans) != "string") {this.data.brans = ""}
+  if (typeof(this.data.sehir) != "string") {this.data.sehir = ""}
+  if (typeof(this.data.tckimlik) != "string") {this.data.tckimlik = ""}
 
   // get rid of any bogus properties
   this.data = {
     username: this.data.username.trim(),
     email: this.data.email.trim().toLowerCase(),
-    password: this.data.password
+    password: this.data.password,
+    brans: this.data.brans,
+    sehir: this.data.sehir,
+    tckimlik: this.data.tckimlik
+    
   }
 }
 
@@ -33,10 +40,10 @@ User.prototype.validate = function() {
     if (this.data.username.length > 50) {this.errors.push("Kullanıcı adı otuz karakteri geçemez.")}
   
     // Only if username is valid then check to see if it's already taken
-    if (this.data.username.length > 2 && this.data.username.length < 31 && validator.isAlphanumeric(this.data.username)) {
-      let usernameExists = await usersCollection.findOne({username: this.data.username})
-      if (usernameExists) {this.errors.push("Bu kullanıcı adı kullanılıyor.")}
-    }
+    // if (this.data.username.length > 2 && this.data.username.length < 31 && validator.isAlphanumeric(this.data.username)) {
+    //   let usernameExists = await usersCollection.findOne({username: this.data.username})
+    //   if (usernameExists) {this.errors.push("Bu kullanıcı adı kullanılıyor.")}
+    // }
   
     // Only if email is valid then check to see if it's already taken
     if (validator.isEmail(this.data.email)) {
